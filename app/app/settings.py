@@ -41,8 +41,16 @@ MIDDLEWARE = [
 ]
 
 GRAPHENE = {
-    'SCHEMA': 'app.schema.schema'
+    'SCHEMA': 'app.schema.schema',
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 }
+
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 ROOT_URLCONF = 'app.urls'
 
@@ -107,7 +115,16 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+### Sent mail ###
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = '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'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+###
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
