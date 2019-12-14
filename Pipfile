@@ -9,7 +9,7 @@ pylint = "*"
 
 [packages]
 autopep8 = "==1.4.3"
-django-cors-headers = "==2.5.2"
+django-cors-headers = "==3.0.2"
 graphene = "==2.1.3"
 graphene-django = "==2.2.0"
 django-graphql-jwt = "==0.2.1"
